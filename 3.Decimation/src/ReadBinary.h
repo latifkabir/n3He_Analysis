@@ -1,10 +1,12 @@
+#include<fstream>
 
 class ReadBinary
 {
 public:
     FILE *ptr_myfile;
     const char* myfile;
-    double Decimate(int channel,long point);
+    std::ofstream after;
+    double Decimate(int channel,int point);
     size_t GetFileSize();
     ReadBinary(const char* filename);
     ~ReadBinary();

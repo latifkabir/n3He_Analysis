@@ -1,6 +1,6 @@
-//This script can scan through binary data for specific channel.
+//This script can Decimate/Average the binary data.
 //Latiful Kabir
-// Date:05/05/2014
+// Date:16/05/2014
 
 
 #include<iostream>
@@ -9,30 +9,21 @@
 
 using namespace std;
 
-void scan(int ch=0,int start=0,int n=10)
-{
-   
-  ReadBinary fa("../data/000");
-                
-    cout<<"Printing "<<n<<" entries starting from "<<start<<" for channel-"<<ch<<endl;
-
-    for(int i=start;i<(start+n);i++)
-    {
-	cout<<i<<"   "<<fa.Decimate(ch,i)<<endl;
-    }
-    cout<<"File size:"<<fa.GetFileSize()<<endl;   
-}
-
 int main(void)
 {
-    int x,y,z;
-    cout<<"Enter Channel number:"<<endl;
-    cin>>x;
-    cout<<"Enter the first entry number:"<<endl;
-    cin>>y;
-    cout<<"Enter how many entries to be printed:"<<endl;
-    cin>>z;
-    scan(x,y,z);
+  ReadBinary fa("../data/000");
+  int size=fa.GetFileSize();
+  int entries=(int)8*size/(64*32);
+  int n;
+                
+  cout<<"Enter number of entries to be decimated:"<<endl; 
+  cin>>n;
+
+    for(int i=0;i<(entries-n);i=i+n)
+    {
+	fa.Decimate(n,i);
+    }
+    cout<<"File size:"<<fa.GetFileSize()<<endl;   
 
     return(0);
 }
