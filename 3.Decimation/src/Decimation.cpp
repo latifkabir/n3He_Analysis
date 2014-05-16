@@ -2,25 +2,25 @@
 #include<cstdio>
 #include<string>
 #include <sys/stat.h>
-#include"ReadBinary.h"
+#include"Decimation.h"
 
 using namespace std;
 
-ReadBinary::ReadBinary(const char* filename)
+Decimation::Decimation(const char* filename)
 {
      myfile=filename;
      ptr_myfile=fopen(filename,"rb");
-     after.open("after.data");
+     after.open("data/after.data");
 
 }
 
-ReadBinary::~ReadBinary()
+Decimation::~Decimation()
 {
     fclose(ptr_myfile);
      after.close();
 }
 
-size_t ReadBinary::GetFileSize()
+size_t Decimation::GetFileSize()
 {
     const string fname = string(myfile);
     struct stat st;
@@ -30,7 +30,7 @@ size_t ReadBinary::GetFileSize()
     return st.st_size;   
 }
 
-double ReadBinary::Decimate(int n,int point)
+double Decimation::Decimate(int n,int point)
 {
 
     struct rec
@@ -67,6 +67,7 @@ double ReadBinary::Decimate(int n,int point)
 	}
     }
 
+    after<<point/n<<"    ";
     for(int k=0;k<64;k++)
     {
 	after<<value[k]/n<<"    ";

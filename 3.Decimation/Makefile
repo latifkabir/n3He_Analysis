@@ -1,5 +1,5 @@
 #Latiful Kabir
-#Makefile for ReadBinary to scan data 
+#Makefile for Decimation and averaging
 #Date:05.09.14
 
 
@@ -9,7 +9,7 @@ CFLAGS=-c -Wall
 LDFLAGS=
 SOURCES=$(wildcard src/*.cpp)
 OBJECTS=$(SOURCES:.cpp=.o)
-EXECUTABLE=scan
+EXECUTABLE=average
 all: $(EXECUTABLE)
 
 $(EXECUTABLE): $(OBJECTS)

@@ -4,14 +4,14 @@
 
 
 #include<iostream>
-#include"ReadBinary.h"
+#include"Decimation.h"
 
 
 using namespace std;
 
 int main(void)
 {
-  ReadBinary fa("../data/000");
+  Decimation fa("data/000");
   int size=fa.GetFileSize();
   int entries=(int)8*size/(64*32);
   int n;

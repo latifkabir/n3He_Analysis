@@ -1,6 +1,6 @@
 #include<fstream>
 
-class ReadBinary
+class Decimation
 {
 public:
     FILE *ptr_myfile;
@@ -8,6 +8,6 @@ public:
     std::ofstream after;
     double Decimate(int channel,int point);
     size_t GetFileSize();
-    ReadBinary(const char* filename);
-    ~ReadBinary();
+    Decimation(const char* filename);
+    ~Decimation();
 };
