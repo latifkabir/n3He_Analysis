@@ -14,7 +14,7 @@
 
 using namespace std;
 
-void PlotCh(int ch,int init){
+void PlotCh(int ch=0,int init=0){
    
   ReadBinary fa("../2.Compare_Ch/data/000");
               
