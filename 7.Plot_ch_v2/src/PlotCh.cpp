@@ -16,19 +16,19 @@ using namespace std;
 
 void PlotCh(int ch=0,int init=0){
 
-  ReadBinary fa("data/000");
+  ReadBinary fa("/home/daq/DATA/ACQ2006/bigrawfile");
   //1.Getting the data in arrays
 
-  const int filesize=6291456;//In Byte
-  const int entries=(int)(8*filesize)/(32*64);
+  const long filesize=18410897408 ;//In Byte
+  const long entries=(long)(8*filesize)/(32*64);
   const int start=init;
 
  //2.Plotting the Sync pulse and pre-amp pick pick-up signal
 
    TCanvas *c1 = new TCanvas("c1","Plot for the channel");
 
-   TGraph *gr1 = new TGraph(entries);
-   for(int i=0;i<entries;i++)
+   TGraph *gr1 = new TGraph((entries-start));
+   for(long i=start;i<entries;i++)
    {
        gr1->SetPoint(i,i,fa.GetValue(ch,i));
    }   
@@ -42,7 +42,7 @@ void PlotCh(int ch=0,int init=0){
 int main(int argc, char** argv)
 {
 
-    if(ifstream("data/000")) 
+    if(ifstream("/home/daq/DATA/ACQ2006/bigrawfile")) 
     {
 	int channel,start;
 	cout<<"Enter the channel number:"<<endl;
